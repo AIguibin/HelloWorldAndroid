@@ -9,6 +9,10 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
+        maven { url "https://jitpack.io" }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
     }
 }
 dependencyResolutionManagement {
@@ -16,6 +20,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
     }
 }
 
