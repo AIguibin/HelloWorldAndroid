@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+/app/Ant-mpaas-ALIPUB6690C31141537-default-Android.config
+/app/mpaas-signed.apk
+/app/release/

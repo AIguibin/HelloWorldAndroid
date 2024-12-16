@@ -1,5 +1,6 @@
 [versions]
 agp = "8.7.3"
+easyconfig = "2.8.2"
 kotlin = "2.0.0"
 coreKtx = "1.12.0"
 junit = "4.13.2"
@@ -11,6 +12,7 @@ activityCompose = "1.8.0"
 composeBom = "2024.04.01"
 
 [libraries]
+easyconfig = { module = "com.android.boost.easyconfig:easyconfig", version.ref = "easyconfig" }
 jsbridge = { group = "com.github.lzyzsd",name = "jsbridge",version.ref = "jsbridge" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -26,6 +28,22 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+appcenter = { group = "com.mpaas.android", name = "appcenter" }
+configservice = { group = "com.mpaas.android", name = "configservice" }
+essential = { group = "com.mpaas.android", name = "essential" }
+framework = { group = "com.mpaas.android", name = "framework" }
+hotfix = { group = "com.mpaas.android", name = "hotfix" }
+inside = { group = "com.mpaas.android", name = "inside" }
+kyc = { group = "com.mpaas.android", name = "kyc" }
+lbs = { group = "com.mpaas.android", name = "lbs" }
+logging = { group = "com.mpaas.android", name = "logging" }
+media = { group = "com.mpaas.android", name = "media" }
+nebula = { group = "com.mpaas.android", name = "nebula" }
+push = { group = "com.mpaas.android", name = "push" }
+upgrade = { group = "com.mpaas.android", name = "upgrade" }
+utdid = { group = "com.mpaas.android", name = "utdid" }
+rpc = { group = "com.mpaas.android", name = "rpc" }
+safekeyboard = { group = "com.mpaas.android", name = "safekeyboard" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
