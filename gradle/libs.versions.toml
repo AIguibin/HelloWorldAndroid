@@ -9,11 +9,14 @@ junitVersion = "1.1.5"
 espressoCore = "3.5.1"
 lifecycleRuntimeKtx = "2.6.1"
 activityCompose = "1.8.0"
+dokitx="3.5.0"
 composeBom = "2024.04.01"
 
 [libraries]
 easyconfig = { module = "com.android.boost.easyconfig:easyconfig", version.ref = "easyconfig" }
 jsbridge = { group = "com.github.lzyzsd",name = "jsbridge",version.ref = "jsbridge" }
+dokitx={group = "io.github.didi.dokit",name = "dokitx",version.ref = "dokitx"}
+dokitx-no-op={group = "io.github.didi.dokit",name = "dokitx-no-op",version.ref = "dokitx"}
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

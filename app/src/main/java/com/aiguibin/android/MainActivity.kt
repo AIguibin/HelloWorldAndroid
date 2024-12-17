@@ -16,6 +16,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import com.aiguibin.android.bridge.BridgeHandlerRegistry
 import com.aiguibin.android.bridge.DefaultBridgeHandler
@@ -44,7 +45,9 @@ class MainActivity : ComponentActivity() {
 @SuppressLint("SetJavaScriptEnabled")
 @Composable
 fun BridgeWebViewScreen(modifier: Modifier = Modifier) {
-    val bridgeHandlerRegistry = remember { BridgeHandlerRegistry() }
+    // 使用 Compose 的 LocalContext 获取当前上下文
+    val context = LocalContext.current
+    val bridgeHandlerRegistry = remember { BridgeHandlerRegistry(context) }
     AndroidView(
         factory = {
             BridgeWebView(it).apply {

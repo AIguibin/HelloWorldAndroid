@@ -1,6 +1,7 @@
 package com.aiguibin.android.bridge;
 
-import com.aiguibin.android.native_modules.LoginBridgeHandler;
+import android.content.Context;
+
 import com.github.lzyzsd.jsbridge.BridgeHandler;
 import com.github.lzyzsd.jsbridge.BridgeWebView;
 
@@ -9,21 +10,21 @@ import java.util.Map;
 
 public class BridgeHandlerRegistry {
 
-    private  final Map<String, BridgeHandler> bridgeHandlers = new HashMap<>();
+    private final Map<String, BridgeHandler> bridgeHandlers = new HashMap<>();
+    private final Context context;
 
-    public BridgeHandlerRegistry() {
-        // 初始化并注册预定义的处理器
-        initializeHandlers();
+    public BridgeHandlerRegistry(Context context) {
+        this.context = context.getApplicationContext();
     }
 
     /**
-     * 注册一个新的处理器
+     * 添加新的处理器
      *
      * @param handlerName 处理器名称
-     * @param handler     实现了BridgeHandler接口的处理器对象
      */
-    public void registerHandler(String handlerName, BridgeHandler handler) {
-        if (handler != null && !handlerName.isEmpty()) {
+    public void setHandler(String handlerName) {
+        if (!handlerName.isEmpty()) {
+            BridgeHandler handler = BridgeHandlersFactory.createHandler(handlerName, context);
             bridgeHandlers.put(handlerName, handler);
         }
     }
@@ -54,13 +55,14 @@ public class BridgeHandlerRegistry {
         bridgeHandlers.clear();
     }
 
-    /**
-     * 初始化并注册三个预定义的处理器
-     */
-    private void initializeHandlers() {
-        // 预定义处理器
-        registerHandler("login", new LoginBridgeHandler());
 
+    /**
+     * 将所有处理器注册到BridgeWebView
+     *
+     * @param webView The BridgeWebView instance to register handlers to.
+     */
+    public void registerHandler(BridgeWebView webView, String handlerName) {
+        webView.registerHandler(handlerName, BridgeHandlersFactory.createHandler(handlerName, context));
     }
 
     /**
@@ -69,6 +71,11 @@ public class BridgeHandlerRegistry {
      * @param webView The BridgeWebView instance to register handlers to.
      */
     public void registerAllHandlers(BridgeWebView webView) {
-        bridgeHandlers.forEach(webView::registerHandler);
+        for (Map.Entry<String, BridgeHandler> entry : BridgeHandlersFactory.createAllHandlers(context).entrySet()) {
+            String key = entry.getKey();
+            BridgeHandler value = entry.getValue();
+            bridgeHandlers.put(key, value);
+            webView.registerHandler(key, value);
+        }
     }
 }
